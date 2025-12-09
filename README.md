@@ -19,17 +19,19 @@ pnpm install
 
 1. Crea un archivo `.env` en la raíz del proyecto:
 
-```
-EMAIL_USER=tu-email@gmail.com
-EMAIL_PASS=tu-app-password-de-gmail
-EMAIL_TO=destinatario@email.com
+```env
+RESEND_API_KEY=re_tu_api_key_aqui
+EMAIL_FROM=onboarding@resend.dev
+EMAIL_TO=tu-email@ejemplo.com
 ```
 
-2. Para obtener un App Password de Gmail:
-   - Ve a tu cuenta de Google
-   - Seguridad → Verificación en dos pasos (debe estar activada)
-   - App Passwords → Genera una nueva contraseña
-   - Usa esa contraseña en EMAIL_PASS
+2. Para obtener tu API Key de Resend:
+   - Crea una cuenta gratuita en https://resend.com
+   - Ve a **API Keys** → **Create API Key**
+   - Copia el API Key
+   - Pégalo en `RESEND_API_KEY`
+
+📖 **Guía completa de configuración**: [SETUP_RESEND.md](SETUP_RESEND.md)
 
 ## Ejecución
 

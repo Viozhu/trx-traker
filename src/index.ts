@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { getCurrentPrice } from './services/priceService';
 import { addPrice, getPriceFromDaysAgo } from './services/storageService';
 import { sendEmail, EmailConfig } from './services/emailService';
@@ -21,13 +22,13 @@ async function main() {
         console.log(`Precio hace 3 días: $${priceThreeDaysAgo}`);
 
         const emailConfig: EmailConfig = {
-            user: process.env.EMAIL_USER || '',
-            pass: process.env.EMAIL_PASS || '',
+            apiKey: process.env.RESEND_API_KEY || '',
+            from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
             to: process.env.EMAIL_TO || '',
         };
 
-        if (!emailConfig.user || !emailConfig.pass || !emailConfig.to) {
-            console.error('Error: Configura las variables de entorno EMAIL_USER, EMAIL_PASS y EMAIL_TO');
+        if (!emailConfig.apiKey || !emailConfig.to) {
+            console.error('Error: Configura las variables de entorno RESEND_API_KEY y EMAIL_TO');
             return;
         }
 

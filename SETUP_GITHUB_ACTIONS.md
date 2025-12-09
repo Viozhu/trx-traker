@@ -25,11 +25,13 @@ Ve a tu repositorio en GitHub:
 2. Click en **New repository secret**
 3. Agrega estos 3 secrets:
 
-| Name | Value |
-|------|-------|
-| `EMAIL_USER` | tu-email@gmail.com |
-| `EMAIL_PASS` | tu-app-password-de-gmail |
-| `EMAIL_TO` | destinatario@email.com |
+| Name | Value | Descripción |
+|------|-------|-------------|
+| `RESEND_API_KEY` | `re_xxxxx...` | Tu API Key de Resend |
+| `EMAIL_FROM` | `onboarding@resend.dev` | Email remitente |
+| `EMAIL_TO` | `tu-email@ejemplo.com` | Tu email personal |
+
+📖 **Cómo obtener el API Key**: Ver [SETUP_RESEND.md](SETUP_RESEND.md)
 
 ## 3. Configurar permisos del workflow
 
