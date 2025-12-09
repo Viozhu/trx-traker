@@ -29,6 +29,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       
+      - name: Debug - Check environment variables
+        run: |
+          echo "Checking environment variables..."
+          if [ -z "$RESEND_API_KEY" ]; then echo "❌ RESEND_API_KEY is not set"; else echo "✅ RESEND_API_KEY is set"; fi
+          if [ -z "$EMAIL_FROM" ]; then echo "❌ EMAIL_FROM is not set"; else echo "✅ EMAIL_FROM is set (value: $EMAIL_FROM)"; fi
+          if [ -z "$EMAIL_TO" ]; then echo "❌ EMAIL_TO is not set"; else echo "✅ EMAIL_TO is set (value: $EMAIL_TO)"; fi
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+      
       - name: Run price tracker
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
