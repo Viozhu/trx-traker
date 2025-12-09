@@ -8,6 +8,7 @@ on:
 jobs:
   track-price:
     runs-on: ubuntu-latest
+    environment: prod
     
     steps:
       - name: Checkout repository
