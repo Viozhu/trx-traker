@@ -55,6 +55,8 @@ jobs:
           git add src/data/prices.json
           if ! git diff --quiet || ! git diff --staged --quiet; then
             git commit -m "Update TRX price data [skip ci]"
+            git stash --include-untracked || true
             git pull --rebase origin main
+            git stash pop || true
             git push
           fi
