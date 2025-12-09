@@ -54,3 +54,34 @@ export async function sendEmail(
     `,
   });
 }
+
+export async function sendPriceOnlyEmail(
+  config: EmailConfig,
+  currentPrice: number
+): Promise<void> {
+  const resend = new Resend(config.apiKey);
+
+  await resend.emails.send({
+    from: config.from,
+    to: config.to,
+    subject: `🪙 TRX 가격 업데이트 - 현재 가격`,
+    html: `
+      <div style="font-family: 'Malgun Gothic', Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #333;">🪙 TRX 가격 추적기</h2>
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <p style="font-size: 16px; margin: 10px 0;">
+            <strong>현재 가격:</strong> 
+            <span style="color: #2563eb; font-size: 20px;">$${currentPrice.toFixed(6)}</span>
+          </p>
+          <p style="font-size: 14px; color: #64748b; margin: 20px 0; padding: 15px; background: #fff; border-radius: 6px; border-left: 4px solid #2563eb;">
+            ℹ️ 아직 3일 전 데이터가 없습니다.<br>
+            가격 비교는 3일 후부터 가능합니다.
+          </p>
+        </div>
+        <p style="color: #64748b; font-size: 12px; margin-top: 20px;">
+          TRX 추적기에서 자동으로 전송됨
+        </p>
+      </div>
+    `,
+  });
+}
